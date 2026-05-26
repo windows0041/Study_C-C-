@@ -13,6 +13,7 @@ void QuickSortTool(vector<int>& arr, int left, int right);
 void QuickSort(vector<int>& arr);
 void BubbleSort(vector<int>& arr);
 void ShellSort(vector<int>& arr);
+void SelectSort(vector<int>& arr);
 void MergeSort(vector<int>& arr);
 void BucketSort(vector<int>& arr);
 void CountingSort(vector<int>& arr);
@@ -89,6 +90,21 @@ void ShellSort(vector<int>& arr) {
             }
             arr[j] = temp;
         }
+    }
+}
+
+// Select Sort
+void SelectSort(vector<int>& arr) {
+    for (int i = 0; i < arr.size(); i++) {
+        int min = arr[i], index = i, j = i;
+        while (j < arr.size()) {
+            if (arr[j] <= min) {
+                min = arr[j];
+                index = j;
+            }
+            j++;
+        }
+        swap(arr[i], arr[index]);
     }
 }
 
@@ -233,15 +249,17 @@ int main() {
     vector<int> arr5 = baseArr;
     vector<int> arr6 = baseArr;
     vector<int> arr7 = baseArr;
+    vector<int> arr8 = baseArr;
 
     // 使用统一的测试函数测试各排序算法
     TestSortingAlgorithm(arr1, BubbleSort, "BubbleSort");
     TestSortingAlgorithm(arr2, QuickSort, "QuickSort");
     TestSortingAlgorithm(arr3, InsertionSort, "InsertionSort");
     TestSortingAlgorithm(arr4, ShellSort, "ShellSort");
-    TestSortingAlgorithm(arr5, MergeSort, "MergeSort");
-    TestSortingAlgorithm(arr6, BucketSort, "BucketSort");
-    TestSortingAlgorithm(arr7, CountingSort, "CountingSort");
+    TestSortingAlgorithm(arr5, SelectSort, "SelectSort");
+    TestSortingAlgorithm(arr6, MergeSort, "MergeSort");
+    TestSortingAlgorithm(arr7, BucketSort, "BucketSort");
+    TestSortingAlgorithm(arr8, CountingSort, "CountingSort");
 
     return 0;
 }
